@@ -26,13 +26,23 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    folio.cpp
+    folio.cpp \
+    settings.cpp \
+    settings.cpp \
+    settings.cpp
 
 HEADERS += \
-    folio.h
+    folio.h \
+    settings.h \
+    settings.h \
+    settings.h
 
 FORMS += \
-    folio.ui
+    folio.ui \
+    settings.ui \
+    settings.ui \
+    settings.ui \
+    settings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

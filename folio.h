@@ -17,10 +17,12 @@ public:
     ~Folio() {}
 
     void setCommand(const QString& command) {
+        command_set_ = true;
         command_ = command;
     }
 
 protected:
+    bool command_set_ = false;
     QString command_;
 
     bool virtual checkValidity(const QFileInfo& target);
@@ -30,6 +32,10 @@ private slots:
     void on_treeView_clicked(const QModelIndex &index);
 
     void on_treeView_doubleClicked(const QModelIndex &index);
+
+    void on_actionExit_triggered();
+
+    void on_actionSettings_triggered();
 
 private:
     QStringList named_filters_ = {"*.txt", "*.markdown"};

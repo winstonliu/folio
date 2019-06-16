@@ -46,7 +46,7 @@ void Settings::on_change_executablePath_clicked()
             tr("Executables (*.bat *.exe)"));
 
     if (!executable_path.isNull()) {
-        ui->rootFolderEntry->setText(executable_path);
+        ui->executablePathEntry->setText(executable_path);
     }
 }
 
@@ -63,8 +63,13 @@ void Settings::on_executablePathEntry_textChanged(const QString &arg1)
 
 void Settings::on_buttonBox_accepted()
 {
-    bool executable_exists = QFileInfo(executable_path_).isExecutable();
-    bool root_dir_exists = QFileInfo(root_folder_path_).isDir();
+    // Can be empty strings as well
+    bool executable_exists = (
+                QFileInfo(executable_path_).isExecutable()
+                || executable_path_.isEmpty());
+    bool root_dir_exists = (
+                QFileInfo(root_folder_path_).isDir()
+                || root_folder_path_.isEmpty());
 
     if (executable_exists && root_dir_exists) {
         // Alert listeners to updated paths
